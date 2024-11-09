@@ -190,6 +190,7 @@ func AodhStatefulSet(
 			Labels:    labels,
 		},
 		Spec: corev1.PodSpec{
+			NodeSelector:       instance.Spec.Aodh.NodeSelector,
 			ServiceAccountName: instance.RbacResourceName(),
 			Containers: []corev1.Container{
 				apiContainer,

@@ -69,6 +69,7 @@ func DbSyncJob(instance *autoscalingv1beta1.Autoscaling, labels map[string]strin
 		Spec: batchv1.JobSpec{
 			Template: corev1.PodTemplateSpec{
 				Spec: corev1.PodSpec{
+					NodeSelector:       instance.Spec.Aodh.NodeSelector,
 					RestartPolicy:      corev1.RestartPolicyOnFailure,
 					ServiceAccountName: instance.RbacResourceName(),
 					Containers: []corev1.Container{
